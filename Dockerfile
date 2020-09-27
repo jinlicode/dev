@@ -7,7 +7,7 @@ RUN mkdir /work && \
     apt update && \
     apt install -y tzdata && \
     apt install -y supervisor wget ca-certificates netbase curl dirmngr apt-transport-https lsb-release && \
-    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt -y install nodejs gcc g++ make && \
     apt-get clean && \
     apt-get autoclean && \
