@@ -3,7 +3,7 @@ name: Jinli Build Image
 on:
   push:
     branches:
-      - "v1"
+      - "master"
     paths-ignore:
       - "README.md"
 
