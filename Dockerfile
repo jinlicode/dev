@@ -2,8 +2,9 @@ FROM ubuntu:20.04
 
 ENV TZ=Asia/Shanghai
 RUN mkdir /work && \
-    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    apt update && \
+    apt install -y tzdata && \
     apt install -y supervisor wget ca-certificates netbase curl dirmngr apt-transport-https lsb-release && \
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - &&\
     apt -y install nodejs gcc g++ make && \
