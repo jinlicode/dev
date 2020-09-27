@@ -8,7 +8,7 @@ RUN mkdir /work && \
     apt install -y tzdata && \
     apt install -y supervisor wget ca-certificates netbase curl dirmngr apt-transport-https lsb-release && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt -y install nodejs gcc g++ make && \
+    apt -y install nodejs gcc g++ make yarn && \
     apt-get clean && \
     apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*  && \
