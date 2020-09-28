@@ -8,7 +8,11 @@ RUN mkdir /work && \
     apt install -y tzdata && \
     apt install -y supervisor wget ca-certificates netbase curl dirmngr apt-transport-https lsb-release && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt -y install nodejs gcc g++ make yarn && \
+    apt -y install nodejs gcc g++ make && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+    apt remove cmdtest && \
+    apt-get update && sudo apt-get install yarn && \
     apt-get clean && \
     apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*  && \
@@ -16,6 +20,6 @@ RUN mkdir /work && \
     tar -C /usr/local -xzf go1.15.2.linux-amd64.tar.gz && \
     rm -rf go1.15.2.linux-amd64.tar.gz
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisor/dev-go.conf /etc/supervisor/conf.d/supervisord.conf
 WORKDIR /work
 CMD [ "/usr/bin/supervisord" ]
