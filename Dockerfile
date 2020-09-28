@@ -20,6 +20,6 @@ RUN mkdir /work && \
     tar -C /usr/local -xzf go1.15.2.linux-amd64.tar.gz && \
     rm -rf go1.15.2.linux-amd64.tar.gz
 
-COPY supervisor/dev-go.conf /etc/supervisor/conf.d/supervisord.conf
+COPY dev.conf /etc/supervisor/conf.d/dev.conf
 WORKDIR /work
 CMD [ "/usr/bin/supervisord" ]
