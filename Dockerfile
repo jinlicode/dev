@@ -9,12 +9,12 @@ RUN mkdir /work && \
     apt install -y supervisor wget ca-certificates netbase curl dirmngr apt-transport-https lsb-release && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt -y install nodejs gcc g++ make && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt remove cmdtest && \
-    apt-get update && sudo apt-get install yarn && \
-    apt-get clean && \
-    apt-get autoclean && \
+    apt update && apt install yarn && \
+    apt clean && \
+    apt autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*  && \
     wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go1.15.2.linux-amd64.tar.gz && \
